@@ -1,0 +1,58 @@
+<html>
+<body>
+<script language='javascript'>
+
+var key = "Gl6Nh1O.P2QeR3Safn5o{pi4q'rsyz@AYCDb:cdE0FHtvJw9xIKgk}mLMBTZ8VWj7X";
+
+UnScramble(Scramble("maree.andre@gmail.com"));
+
+// Obfuscate the input text with the key
+function CreateLookupObject()
+{
+	var chars = {};
+        for (var i = 0; i < key.length; i++)
+        {
+		chars[key[i].toString()] = key[key.length - 1 - i].toString();
+        }
+
+	return chars;
+}
+
+// Reverse the obfuscated text with the key
+function Scramble(text)
+{
+	var chars = CreateLookupObject();
+
+	var scrambled = text.split('');
+
+	for (var i = 0; i < scrambled.length; i++)
+        {
+        	if (key.indexOf(scrambled[i])>-1)
+                {
+                    scrambled[i] = chars[scrambled[i]];
+                }
+        }
+
+	alert(scrambled.join(''));
+
+	return scrambled.join('');
+}
+
+// Helper method to create a lookup dictionary based on the key
+function UnScramble(text)
+{
+	var chars = CreateLookupObject();
+
+	var scrambled = text.split('');
+
+	for(var i = 0; i < scrambled.length; i++)
+	{
+		scrambled[i] = chars[scrambled[i]];
+	}
+
+	alert(scrambled.join(''));
+}
+	
+</script>
+</body>
+</html>
