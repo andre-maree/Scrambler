@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrambler", "Scrambler\Scrambler.csproj", "{279925A2-01E1-4FF9-9FC8-40B19F9B5D65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38BAFC26-F039-47BA-B5F3-4043E037436B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\OneDrive - Mint Management Technologies\Desktop\scrambler.htm = ..\..\..\..\OneDrive - Mint Management Technologies\Desktop\scrambler.htm
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{279925A2-01E1-4FF9-9FC8-40B19F9B5D65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{279925A2-01E1-4FF9-9FC8-40B19F9B5D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{279925A2-01E1-4FF9-9FC8-40B19F9B5D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{279925A2-01E1-4FF9-9FC8-40B19F9B5D65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FDAA071-C513-4F0A-9108-BF042417FACA}
+	EndGlobalSection
+EndGlobal
