@@ -10,7 +10,7 @@
         var unscrambledText = UnScramble(scrambledText);
         alert(unscrambledText);
 
-        // Reverse the obfuscated text with the key
+        // Obfuscate the input text with the key
         function Scramble(text) {
             var chars = CreateLookupObject();
 
@@ -25,7 +25,7 @@
             return scrambled.join('');
         }
 
-        // Helper method to create a lookup dictionary based on the key
+        // Reverse the obfuscated text with the key
         function UnScramble(text) {
             var chars = CreateLookupObject();
 
@@ -38,7 +38,7 @@
             return unscrambled.join('');
         }
 
-        // Obfuscate the input text with the key
+        // Helper method to create a lookup dictionary based on the key
         function CreateLookupObject() {
             var chars = {};
 
