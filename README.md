@@ -1,6 +1,6 @@
 # Scrambler
 
-* Add an extra layer of protection of sensitive alpharumeric text data
+* Add an extra layer of protection of sensitive alpharumeric text or JSON data
 * Pass scrambled text between browser and server, Javascipt to C#, and vice versa
 * Obfuscate alphanumeric text based on a key, and de-obfuscate (reverse it) based on the key
 * There is a Javascript version which can be used in a browser in the included file scrambler.htm
