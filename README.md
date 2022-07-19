@@ -1,8 +1,8 @@
 # Scrambler
 
-* Add an extra layer of protection of sensitive alpharumeric text or JSON data
-* Pass scrambled text between browser and server, Javascipt to C#, and vice versa
-* Obfuscate alphanumeric text based on a key, and de-obfuscate (reverse it) based on the key
-* There is a Javascript version which can be used in a browser in the included file scrambler.htm
-* Scrambled text is not larger in size than the input text, so it will not incur extra storage cost because of a larger size
+* Add an extra layer of protection of sensitive alphanumeric text or JSON data
+* Pass scrambled text between browser and server, JavaScript to C#, and vice versa
+* Obfuscate alphanumeric text with a key, and de-obfuscate (reverse it) with the key
+* There is a JavaScript version which can be used in a browser in the included file scrambler.htm
+* Scrambled text is the same size as the input text, so it will not incur extra storage or transaction costs because of a larger size
 * Scrambler is lightweight and fast
