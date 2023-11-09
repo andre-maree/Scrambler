@@ -6,10 +6,35 @@ namespace Scrambler
 {
     class Program
     {
+        public static string GenerateKey(string str)
+        {
+            char[] array = str.ToCharArray();
+            Random rng = new Random();
+            int n = array.Length;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                var value = array[k];
+                array[k] = array[n];
+                array[n] = value;
+            }
+            return new string(array);
+        }
+
         static void Main(string[] args)
         {
-            string key = @"Gl6Nh1]O.P2QeR3Safn5o{pi4q'rsyz@A\YCDb:cdE0FH/tvJ""[w9xI=Kgk}mLMBTZ8VWj7X";
+            string allchars = @"!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
+            string key = GenerateKey(allchars);
+
+            Console.WriteLine("Data before encryption with random generated key:");
+            Console.WriteLine(key);
+            Console.WriteLine();
+
+            //string key = @"Gl6Nh1]O.P2)QeR3S#af&n(5o{pi4*q'rs;yz@A\Y!CDb:cdE-+0FH/tvJ""[w9xI=Kgk}mLM$BTZ8VWj%7X";
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
             //example json data
             string data = @"{
             ""name"": ""Retry"",
@@ -19,7 +44,7 @@ namespace Scrambler
                 ""Timer"": {
                     ""TimerOptions"": {
                         ""Interval"": 5,
-                        ""MaxRetryInterval"": 10,
+                        ""MaxRetryI'erval"": 10,
                         ""MaxNu\mberOfAttempts"": 2,
                         ""Backo\\ffCoefficient"": 1.0,
                         ""EndDate"": ""2024-08-03T10:13:31.379Z""
@@ -29,7 +54,7 @@ namespace Scrambler
                     ""Timeout"": 10,
                     ""Headers"": {
                         ""Authorization"": [
-                            ""Bearer Q0FTLVNEQyBQb23OSAtICAo9ydCBkb2NzLCBOT1IFRlbXBsYXRlIC8gU3VwcG9ydCBkb2NzLCBOT1QgZGV0YWlsZWQgMTF8MjcxNzIQgbWFudWFscykK""
+                            ""Bearer Q0FTLVNEQyBQb23OSAtICAo9ydCBkb2NzLCBOT1IFRlbXBsYXRlI'8gU3VwcG9ydCBkb2NzLCBOT1QgZGV0YWlsZWQgMTF8MjcxNzIQgbWFudWFscykK""
                         ]
                     },
                     ""HttpMethod"": {
@@ -42,7 +67,7 @@ namespace Scrambler
                         ""MaxRetryInterval"": 10,
                         ""MaxNumberOfAttempts"": 1,
                         ""BackoffCoefficient"": 1.0,
-                        ""EndDate"": ""2024-08-03T10:13:31.379Z""
+                        ""EndDate"": ""2024-08-03T1""""0:13:31.379Z""
                     }
                 },
                 ""Count"": 0,
@@ -57,15 +82,40 @@ namespace Scrambler
                         
             Console.WriteLine(data);
 
+            Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Data after encryption:");
+
             string scrambled = Scrambler.Scramble(data, key);
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(scrambled);
+
+            Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Data after decryption:");
+
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
 
             string unscrambled = Scrambler.UnScramble(scrambled, key);
             Console.WriteLine(unscrambled);
+            Console.WriteLine();
 
-            Console.WriteLine(unscrambled.Equals(data));
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.WriteLine();
+            Console.WriteLine("Success: " + unscrambled.Equals(data));
 
             Console.ReadKey();
+            Console.Clear();
+
+            Main(null);
         }
     }
 }
