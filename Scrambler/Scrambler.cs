@@ -7,8 +7,10 @@ namespace Scrambler
         /// <summary>
         /// Obfuscate the input text with the key
         /// </summary>
-        public static string Scramble(this string text, string key)
+        public static string Scramble(this string text, string key, Encoding enc)
         {
+            text = Convert.ToBase64String(enc.GetBytes(text));
+
             Dictionary<char, char> chars;
             StringBuilder sb;
             CreateLookup(text, key, out chars, out sb);
@@ -27,7 +29,7 @@ namespace Scrambler
         /// <summary>
         /// Reverse the obfuscated text with the key
         /// </summary>
-        public static string UnScramble(this string text, string key)
+        public static string UnScramble(this string text, string key, Encoding enc)
         {
             Dictionary<char, char> chars;
             StringBuilder sb;
@@ -42,7 +44,7 @@ namespace Scrambler
                 }
             }
 
-            return sb.ToString();
+            return enc.GetString(Convert.FromBase64String(sb.ToString()));
         }
 
         /// <summary>

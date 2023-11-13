@@ -2,6 +2,8 @@
 // There is a Javascript version which can be used in a browser in the included file scrambler.htm
 // Text can be encrypted in Javascript and passed to C# and reverse the obfuscation, and vice versa
 
+using System.Text;
+
 namespace Scrambler
 {
     class Program
@@ -22,19 +24,19 @@ namespace Scrambler
             return new string(array);
         }
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            string allchars = @"!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+            var enc = Encoding.GetEncoding("utf-8");
 
+            string allchars = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz/+=";
             string key = GenerateKey(allchars);
 
-            Console.WriteLine("Data before encryption with random generated key:");
+            await Scrambler_VS_Encryption.DoTheTest(key, enc);
+
+            Console.WriteLine("Generated key:");
             Console.WriteLine(key);
             Console.WriteLine();
 
-            //string key = @"Gl6Nh1]O.P2)QeR3S#af&n(5o{pi4*q'rs;yz@A\Y!CDb:cdE-+0FH/tvJ""[w9xI=Kgk}mLM$BTZ8VWj%7X";
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.ForegroundColor = ConsoleColor.White;
             //example json data
             string data = @"{
             ""name"": ""Retry"",
@@ -47,7 +49,7 @@ namespace Scrambler
                         ""MaxRetryI'erval"": 10,
                         ""MaxNu\mberOfAttempts"": 2,
                         ""Backo\\ffCoefficient"": 1.0,
-                        ""EndDate"": ""2024-08-03T10:13:31.379Z""
+                        ""EndD¶ate"": ""2024-08-03T10:13:31.379Z""
                     },
                     ""StatusCodeReplyForCompletion"": 0,
                     ""Url"": ""http://localhost:4005/api/projects/MoveToTrash/TimerWebHook"",
@@ -79,37 +81,11 @@ namespace Scrambler
                 ""createdTime"": ""2023-11-08T15:02:44Z"",
                 ""lastUpdatedTime"": ""2023-11-08T15:03:02Z""
             }";
-                        
-            Console.WriteLine(data);
 
-            Console.WriteLine();
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Data after encryption:");
+            string scrambled = Scrambler.Scramble(data, key, enc);
 
-            string scrambled = Scrambler.Scramble(data, key);
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(scrambled);
+            string unscrambled = Scrambler.UnScramble(scrambled, key, enc);
 
-            Console.WriteLine();
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Data after decryption:");
-
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.White;
-
-            string unscrambled = Scrambler.UnScramble(scrambled, key);
-            Console.WriteLine(unscrambled);
-            Console.WriteLine();
-
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
-
-            Console.WriteLine();
             Console.WriteLine("Success: " + unscrambled.Equals(data));
 
             Console.ReadKey();
